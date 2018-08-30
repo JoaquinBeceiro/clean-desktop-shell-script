@@ -20,4 +20,5 @@ mv ~/Desktop/*.png ~/Documents/IMAGEs/ >/dev/null 2>&1
 mv ~/Desktop/*.gif ~/Documents/GIFs/ >/dev/null 2>&1
 mv ~/Desktop/*.ttf ~/Documents/FONTs/ >/dev/null 2>&1
 mv ~/Desktop/*.otf ~/Documents/FONTs/ >/dev/null 2>&1
+mv ~/Desktop/*.fnt ~/Documents/FONTs/ >/dev/null 2>&1
 printf '\e[32m Desktop cleaned!\n'
