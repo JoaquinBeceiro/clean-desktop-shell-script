@@ -8,17 +8,27 @@ mkdir ~/Documents/IMAGEs/ >/dev/null 2>&1
 mkdir ~/Documents/GIFs/ >/dev/null 2>&1
 mkdir ~/Documents/FONTs/ >/dev/null 2>&1
 
+nFormat=( "pdf:PDFs"
+    "psd:PSDs"
+    "csv:CSVs"
+    "jpg:IMAGEs" 
+    "svg:IMAGEs" 
+    "webp:IMAGEs" 
+    "png:IMAGEs" 
+    "gif:GIFs" 
+    "ttf:FONTs" 
+    "otf:FONTs" 
+    "fnt:IMAGEs" 
+)
+
 mv ~/Desktop/*Screen\ Shot* ~/Documents/ScreenShots/ >/dev/null 2>&1
-mv ~/Desktop/*.pdf ~/Documents/PDFs/ >/dev/null 2>&1
-mv ~/Desktop/*.psd ~/Documents/PSDs/ >/dev/null 2>&1
-mv ~/Desktop/*.csv ~/Documents/CSVs/ >/dev/null 2>&1
-mv ~/Desktop/*.jpg ~/Documents/IMAGEs/ >/dev/null 2>&1
-mv ~/Desktop/*.jpeg ~/Documents/IMAGEs/ >/dev/null 2>&1
-mv ~/Desktop/*.svg ~/Documents/IMAGEs/ >/dev/null 2>&1
-mv ~/Desktop/*.webp ~/Documents/IMAGEs/ >/dev/null 2>&1
-mv ~/Desktop/*.png ~/Documents/IMAGEs/ >/dev/null 2>&1
-mv ~/Desktop/*.gif ~/Documents/GIFs/ >/dev/null 2>&1
-mv ~/Desktop/*.ttf ~/Documents/FONTs/ >/dev/null 2>&1
-mv ~/Desktop/*.otf ~/Documents/FONTs/ >/dev/null 2>&1
-mv ~/Desktop/*.fnt ~/Documents/FONTs/ >/dev/null 2>&1
+
+for k in "${nFormat[@]}" ; do
+    KEY=${k%%:*}
+    VALUE=${k#*:}
+    uFormat=$( echo "$KEY" | tr -s  '[:lower:]'  '[:upper:]' )
+    mv ~/Desktop/*.$KEY ~/Documents/$VALUE/ >/dev/null 2>&1
+    mv ~/Desktop/*.$uFormat ~/Documents/$VALUE/ >/dev/null 2>&1
+done
+
 printf '\e[32m Desktop cleaned!\n'
